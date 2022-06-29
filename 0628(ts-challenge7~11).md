@@ -2,7 +2,7 @@
 
 https://driip.me/b812974b-3974-46e3-829e-1476b9b30c94
 
-```ts
+```typescript
 // type MyAwaited<T extends Promise<any>> = T extends Promise<infer P> ? (P extends Promise<any> ? MyAwaited<P> : P) : never;
 type MyAwaited<T> = T extends Promise<infer P> ? MyAwaited<P> : T;
 
@@ -166,3 +166,5 @@ type cases = [
   Expect<Equal<Push<["1", 2, "3"], boolean>, ["1", 2, "3", boolean]>>
 ];
 ```
+
+9 の concat と同じ問題だった。
