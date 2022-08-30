@@ -1,4 +1,4 @@
-# 7. Awaited
+# 7. 🌟 Awaited
 
 https://driip.me/b812974b-3974-46e3-829e-1476b9b30c94
 
@@ -25,7 +25,7 @@ type cases = [
 type error = MyAwaited<number>;
 ```
 
-（infer は後ろにまた出るという意味で今まで理解、、なぜかというと infer を消すと TS は infer が理解できなくなる。新たな気づきがあったら修正予定）
+（infer は前の T の条件と合わせて後ろにまた出るという意味で今まで理解、、なぜかというと infer を消すと TS は infer が理解できなくなる。新たな気づきがあったら修正予定）
 Conditional tpyes で extends の使い方はやっと理解できたと思う。extends の後ろにある条件の中に extends の前の部分が入っているのかをチェックする
 
 解釈してみると MyAwaited という type alias のジェネリック T は `Promise<infer P>`の中に入る集合である。
@@ -97,9 +97,16 @@ type cases = [
 
 これは簡単だった！
 
-# 10. include
+# 10. 🌟 include
 
 ```ts
+// Equalを自分で作るとしたら
+type Equal<A, B> = (<T>() => T extends A ? 1 : 2) extends <T>() => T extends B
+  ? 1
+  : 2
+  ? true
+  : false;
+
 type Includes<T extends readonly any[], U> = T extends [infer A, ...infer R]
   ? Equal<A, U> extends true
     ? true
